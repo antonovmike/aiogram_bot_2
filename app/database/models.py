@@ -41,3 +41,8 @@ class Product(Base):
 
     category = relationship('Category', back_populates='products')
     # orders = relationship('Order', back_populates='products')
+
+
+async def async_main():
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
