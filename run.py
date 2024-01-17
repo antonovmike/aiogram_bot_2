@@ -1,5 +1,7 @@
 import asyncio
+import logging
 import os
+import sys
 
 from aiogram import Bot, Dispatcher
 
@@ -17,6 +19,7 @@ async def main():
 
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
