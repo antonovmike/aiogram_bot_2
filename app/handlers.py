@@ -3,6 +3,7 @@ from aiogram.types import Message, CallbackQuery
 from aiogram.filters import CommandStart
 
 import app.keyboards as kb
+from app.database.requests import get_product
 
 
 router = Router()
@@ -28,5 +29,6 @@ async def category_selected(callback: CallbackQuery):
 @router.callback_query(F.data.startswith("product_"))
 async def product_selected(callback: CallbackQuery):
     product_id = callback.data.split("_")[1]
-    await callback.message.answer(f"Your item: {product_id}")
+    product = await get_product(product_id=product_id)
+    await callback.message.answer(f"Your item: <b>{product.name}</b>\n{product.description}\n{product.price}")
     await callback.answer("Chosen")
