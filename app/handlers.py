@@ -21,5 +21,12 @@ async def cmd_catalogue(message: Message):
 @router.callback_query(F.data.startswith("category_"))
 async def category_selected(callback: CallbackQuery):
     category_id = callback.data.split("_")[1]
-    await callback.message.answer(f"You choose {category_id}")
+    await callback.message.answer(f"Items in the selected category:", reply_markup=await kb.products(category_id))
+    await callback.answer("Chosen")
+
+
+@router.callback_query(F.data.startswith("product_"))
+async def product_selected(callback: CallbackQuery):
+    product_id = callback.data.split("_")[1]
+    await callback.message.answer(f"Your item: {product_id}")
     await callback.answer("Chosen")
