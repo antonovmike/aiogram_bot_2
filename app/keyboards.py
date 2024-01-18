@@ -23,4 +23,4 @@ async def products(category_id):
     products = await get_products(category_id)
     for product in products:
         products_kb.add(InlineKeyboardButton(text=product.name, callback_data=f"product_{product.id}"))
-        return products_kb.adjust(2).as_markup()
+    return products_kb.adjust(2).as_markup()
