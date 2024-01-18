@@ -31,4 +31,4 @@ async def product_selected(callback: CallbackQuery):
     product_id = callback.data.split("_")[1]
     product = await get_product(product_id=product_id)
     await callback.message.answer(f"Your item: <b>{product.name}</b>\n{product.description}\n{product.price}")
-    await callback.answer("Chosen")
+    await callback.message.answer("If you'd like to add this item to your card?", reply_markup=await kb.add_to_card())

@@ -10,6 +10,12 @@ main = ReplyKeyboardMarkup(keyboard=[
 ], resize_keyboard=True, input_field_placeholder="Chose an option")
 
 
+async def add_to_card():
+    add_button = InlineKeyboardBuilder()
+    add_button.add(InlineKeyboardButton(text="Add to card", callback_data="add_to_card"))
+    return add_button.adjust(2).as_markup()
+
+
 async def categories():
     categories_kb = InlineKeyboardBuilder()
     categories = await get_categories()
