@@ -7,12 +7,12 @@ from aiogram import Bot, Dispatcher
 
 from dotenv import load_dotenv
 
-from app.headers import router
+from app.handlers import router
 from app.database.models import async_main
 
 
 load_dotenv()
-TOKEN = os.getenv('TOKEN')
+TOKEN = os.getenv("TOKEN")
 
 
 async def main():
@@ -23,7 +23,7 @@ async def main():
     await dp.start_polling(bot)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     try:
         asyncio.run(main())
